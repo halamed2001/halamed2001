@@ -1,0 +1,74 @@
+{% extends 'parts/base.html' %}
+ {% block content %}
+
+<!---->
+
+
+    <div class="container">
+        <h2 >البحث عن متطوع</h2>
+        <center>
+        <div class="  col-lg-10">
+        <div class="card">
+          <div class="card-body" >
+            <form>
+              <input type="hidden" name="filters" value="">
+              <div class="row">
+  
+                <div style="padding-top:5px;" class="col-lg-3">
+                    <button type="submit" class="btn btn-block btn-success" name="button">البحث</button>
+                </div>
+  
+                <div style="padding-top:10px;" class="col-lg-3">
+                  <label for="">قابلون للنزع</label>
+                  <input checked name="capable" type="checkbox" name="" value="">
+                </div>
+                <div class="col-lg-3">
+                    <select name="wilaya_id" id="wilayas_select" class="form-control">
+                      <option value="">الولاية</option>
+                    </select>
+                </div>
+                <div class="col-lg-3">
+                  <select name="blood_type" id="" class="form-control">
+                      <option value="">صنف الدم</option>
+                                            <option   value="O-">O-</option>
+                                            <option   value="O+">O+</option>
+                                            <option   value="A+">A+</option>
+                                            <option   value="A-">A-</option>
+                                            <option   value="B+">B+</option>
+                                            <option   value="B-">B-</option>
+                                            <option   value="AB+">AB+</option>
+                                            <option   value="AB-">AB-</option>
+                                        </select>
+                </div>
+            
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+</center>
+</div>
+
+
+    <h4> المتبرعين </h4>
+    <div class="container">
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th style="text-align:right;">الهاتف</th>
+        <th style="text-align:right;">الاسم</th>
+        <th style="text-align:right;">الزمرة</th>     
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+        <td></td>
+        <td> </td>
+        <td> </td>
+    </tr>
+
+</tbody>
+</table>
+</div>
+
+{% endblock content %}

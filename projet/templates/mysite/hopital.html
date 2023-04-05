@@ -1,0 +1,14 @@
+{% extends 'parts/base.html' %}
+{% block content %}
+
+<div class="card" style="max-width:800px;margin:0 auto;">
+<div class="card-body" style=" text-align: right;">
+<form action="" method="POst">
+    <h2>اهلا </h2>
+    {% csrf_token %}
+ {{ hf.as_p }} 
+<button class="btn btn-success">سجل الان😊</button>
+</form>
+</div>
+</div>
+{% endblock content %}
