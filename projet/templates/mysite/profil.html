@@ -1,7 +1,26 @@
 {% extends 'parts/base.html' %} 
 {% load static %}
 {% block content%}
-<div class="container">
+
+<style>
+    main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: auto;
+    }
+    #logo-img{
+        height: 11em;
+        width: 26em;
+    }
+</style>
+
+
+<main role="main" id="background">
+
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12">
             <div class="card shadow rounded-0">
@@ -13,18 +32,20 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <dl>
-                                    <dt class="text-muted">الاسم</dt>
-                                    <dd class="ps-4">{{ Donneur.nom }}</dd>
-                                    <dt class="text-muted">الهاتف</dt>
-                                    <dd class="ps-4">{{ Donneur.tel }}</dd>
-                                    <dt class="text-muted">كلمةالسر</dt>
-                                    <dd class="ps-4">{{ Donneur.password}}</dd>
-                                    <dt class="text-muted">فصيلة الدم</dt>
-                                    <dd class="ps-4">{{ Donneur.groupeSanguin }}</dd>
-                                    <dt class="text-muted">تاريخ اخر تبرع</dt>
-                                    <dd class="ps-4">{{ Donneur.date_Dernier_Don }}</dd>
-                                    <dt class="text-muted">الجنس</dt>
-                                    <dd class="ps-4">{{ Donneur.gender }}</dd>
+                                    <dt >الاسم</dt>
+                                    <dd >{{ Donneur.nom }}</dd>
+                                    <dt >الهاتف</dt>
+                                    <dd >{{ Donneur.tel }}</dd>
+                                    <dt >كلمةالسر</dt>
+                                    <dd >{{ donneur.password}}</dd>
+                                    <dt >فصيلة الدم</dt>
+                                    <dd >{{ donneur.groupeSanguin }}</dd>
+                                    <dt >تاريخ اخر تبرع</dt>
+                                    <dd >{{ donneur.date_Dernier_Don }}</dd>
+                                    <dt >الجنس</dt>
+                                    <dd >{{ donneur.gender }}</dd>
+                                    <dt >الولاية</dt>
+                                    <dd >{{ donneur.wilaya }}</dd>
                                 </dl>
                             </div>
                         </div>
@@ -32,8 +53,8 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex w-100 text-end justify-content-end">
-                        <a href="#" class="btn btn btn-light border btn-sm bg-gradient rounded-0 me-2">تغيير كلمةالسر</a>
-                        <a href="#" class="btn btn btn-primary btn-sm bg-gradient rounded-0">تعديل الصفحة</a>
+                        <a href="{% url 'update_password' %}" class="btn btn btn-light border btn-sm bg-gradient rounded-0 me-2">تغيير كلمةالسر</a>
+                        <a href="{% url 'update_profile' %}" class="btn btn btn-primary btn-sm bg-gradient rounded-0">تعديل الصفحة</a>
                     </div>
                 </div>
             </div>

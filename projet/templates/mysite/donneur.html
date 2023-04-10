@@ -2,89 +2,23 @@
 {% load static %}
  {% block content %}
  
-<!-- <div class="card" style="max-width:800px;margin:0 auto;">
-   <div class="card-body">
-    <form action="" method="POST">
-      <h1>دمك حياة لغيرك</h1><br>
-     
+<div class="card" style="max-width:800px;margin:0 auto;">
+   <div class="card-body" style=" text-align: right;">
+    {%if form.is_valid %}
+    <div class="alert alert-success" role="alert">
+      <p>{{msg}}</p></div>
+     {%endif%} 
+    <form action="" method="POST" novalidate>
+        <h1 class="card-title"><b>إضافة متبرع</b></h1>
         {% csrf_token %}
-          {{ df.as_p }} 
+        {% include 'mysite/form.html' %} 
     <button type="submit" class="btn btn-success">سجل الان😊</button>
-    <h5>{{msg}}</h5>
     </form>
 </div>
-</div>-->
- 
-     <div class="d-flex flex-column w-100 justify-content-center align-items-center">
-   
-     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-      <div class="card card-default rounded-0 shadow">
-          <div class="card-header">
-            <h1 class="card-title"><b>إضافة متبرع</b></h1>
- <div class="card-body">
- <div class="container-fluid">
-<form method="post" id="donneur_form" novalidate>
-   {% csrf_token %}
-   
-   <div>
+</div>
 
-   <div class="form-group mb-3">
-           <div>
-              <label class="required" for="id_nom" class="control-label">الاسم:</label>
-              <input type="text" name="nom"  class="form-control rounded-0"  required id="id_nom">     
-           </div>
-   </div>
-   <div class="form-group mb-3">
-           <div>
-              <label class="required" for="id_tel">الهاتف:</label>
-              <input type="number" name="tel" class="form-control rounded-0"  required id="id_tel">    
-           </div>
-   </div>
-   <div class="form-group mb-3">
-           <div>
-              <label class="required" for="id_password">كلمةالسر:</label>
-              <input type="password" name="password" class="form-control rounded-0"  required id="id_password">    
-           </div>
-   </div>
-   <div class="form-group mb-3">
-           <div>
-               <label class="required" for="id_groupeSanguin">زمرةالدم:</label>
-               <select name="groupeSanguin" required id="id_groupeSanguin" class="form-control rounded-0" >
-                        <option value="" selected>---------</option>
-                        <option value="لا اعرف">لا اعرف</option>
-                        <option value="o-">o-</option>
-                        <option value="o+">o+</option>
-                        <option value="A-">A-</option>
-                        <option value="B-">B-</option>
-                        <option value="AB-">AB-</option>
-                        <option value="B+">B+</option>
-                        <option value="AB+">AB+</option>
-                        <option value="A+">A+</option>
-                        </select>     
-           </div>    
-   </div>
-   <div class="form-group mb-3">
-           <div>
-              <label class="required" for="id_date_Dernier_Don">تاريخ اخر تبرع:</label>                 
-              <input type="text" name="date_Dernier_Don" class="form-control rounded-0"  required id="id_date_Dernier_Don">               
-           </div>   
-   </div>
-   <div class="form-group mb-3">     
-           <div>               
-              <label class="required" for="id_gender">الجنس:</label>                  
-              <select name="gender" required id="id_gender" class="form-control rounded-0" >
-                        <option value="" selected>---------</option>
-                        <option value=" دَكر">دَكر</option>
-                        <option value="انثى">انثى</option>
-                        </select>               
-           </div>      
-   </div>
-   <div class="d-flex w-100 justify-content-between align-items-center">
-      <div class="col-md-4">
-          <a href="{% url 'login' %}">الدخول</a> 
-      </div>
-      <button type="submit" class="btn btn-success">سجل الان😊</button>
-</fieldset>
+
+     
 
 <script id="django-admin-form-add-constants"
 src="/static/admin/js/change_form.js"

@@ -1,4 +1,36 @@
 {% extends 'parts/base.html' %}
 {% block content %}
+
+<style>
+  main {
+      height: 80%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+  }
+  #logo-img{
+      height: 11em;
+      width: 26em;
+  }
+</style>
+
+
+<main role="main" id="background">
+
 <h2>اهلا </h2>
+<div class="card" id="contact" style="max-width:800px;margin:0 auto;">
+    <div class="card-body">
+      <h1>للإستفسار أو الإتصال بالفرع الرئيسي</h1>
+      <hr>
+      <h3>(المكتب الرئيسي (وهران</h3>
+      <p>
+        +222 27 48 54 93 :الهاتف
+      </p>
+      <p>
+        <a href="Gmail:halamed2001@gmail.com">halamed2001@gmail.com</a> :الإيمل
+      </p>
+    </div>
+  </div>
 {% endblock content %}

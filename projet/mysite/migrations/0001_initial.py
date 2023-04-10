@@ -23,6 +23,18 @@ class Migration(migrations.Migration):
                 ('groupeSanguin', models.CharField(max_length=5, choices=(('لا اعرف', 'لا اعرف'), ('o-', 'o-'), ('o+', 'o+'), ('A-', 'A-'), ('B-', 'B-'), ('AB-', 'AB-'), ('B+', 'B+'), ('AB+', 'AB+'), ('A+', 'A+')))),
                 ('date_Dernier_Don', models.DateField()),
                 ('gender', models.CharField(max_length=30, choices=(('Male', 'Male'), ('Female', 'Female')))),
+                ('wilaya', models.CharField(max_length=30, choices=(('الحوض الشرقي', 'الحوض الشرقي'),('الحوض الغربي', 'الحوض الغربي'),
+                    ('لعصابة', 'لعصابة'),
+                    ('كوركول', 'كوركول'),
+                    ('لبراكنة', 'لبراكنة'),
+                    ('ترارزة', 'ترارزة'),
+                    ('أدرار', 'أدرار'),
+                    ('انواذيبو', 'انواذيبو'),
+                    ('تكانت', 'تكانت'),
+                    ('غيديماغا', 'غيديماغا'),
+                    ('تيرس زمور', 'تيرس زمور'),
+                    ('إنشيري', 'إنشيري'),
+                    ('انواكشوط', 'انواكشوط')))),
             ],
         ),
         migrations.CreateModel(
@@ -30,6 +42,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('nom', models.CharField(max_length=20)),
+                ('pasword', models.CharField(max_length=10)),
             ],
         ),
         migrations.CreateModel(

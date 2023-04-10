@@ -1,8 +1,23 @@
-{% extends 'parts/base.html' %}
+{% extends 'parts/base.html' %} {% load static %}
  {% block content %}
 
-<!---->
+ <style>
+  main {
+      height: 50%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+  }
+  #logo-img{
+      height: 11em;
+      width: 26em;
+  }
+</style>
 
+
+<main role="main" id="background">
 
     <div class="container">
         <h2 >البحث عن متطوع</h2>
@@ -48,7 +63,7 @@
     </div>
 </center>
 </div>
-
+</main>
 
     <h4> المتبرعين </h4>
     <div class="container">
@@ -71,4 +86,43 @@
 </table>
 </div>
 
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{%  static 'jquery.js'%}"></script>
+
+<script type="text/javascript">
+
+  $("body").ready(function(e) {
+        $('#counter').counterUp({
+            delay: 10,
+            time: 1000
+        });
+    });
+</script>
+</html>
+<script>
+$("body").ready(function(e){
+  $("#wilaya_id").change(function(e){
+    var wilaya_id = $(e.target).val();
+    if(wilaya_id == "") return;
+    $.ajax({
+      url:"./get_contact.php",
+      method:"get",
+      data:{wilaya_id},
+      success:function(response){
+        $("#contact_wrapper").replaceWith(contact_wrapper(response));
+      }
+    });
+  });
+});
+function contact_wrapper(contacts){
+  var contact_wrapper = $(`<div id="contact_wrapper"></div>`);
+  contacts.forEach(function(contact, index){
+    $(contact_wrapper).append(`<div><h3>${contact.fullname}</h3><p>الهاتف: <a href="tel:${contact.tel}">${contact.tel}</a></p><p><a target="_blank" href="${contact.fb_page}">صفحة الفايسبوك</a><p></div>`);
+  });
+  return contact_wrapper;
+}
+</script>
+
 {% endblock content %}
+ 

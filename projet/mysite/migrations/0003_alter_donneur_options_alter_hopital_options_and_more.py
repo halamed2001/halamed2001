@@ -22,10 +22,6 @@ class Migration(migrations.Migration):
             name='rendez_vous',
             options={'verbose_name': 'ميعاد', 'verbose_name_plural': 'المواعيد'},
         ),
-        migrations.RemoveField(
-            model_name='donneur',
-            name='email',
-        ),
         migrations.AlterField(
             model_name='donneur',
             name='date_Dernier_Don',

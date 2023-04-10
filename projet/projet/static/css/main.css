@@ -120,7 +120,11 @@
     margin-top: 7px;
     margin-bottom: 7px;
   }
-
+  .dark-version .form-select {
+    border: 1px solid #d2d6da38 !important;
+    color: #fff !important;
+    padding: 0.5rem 0.5rem !important;
+}
 
 
 
