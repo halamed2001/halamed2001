@@ -1,19 +1,21 @@
 {% extends 'parts/base.html' %}
 {% block content %}
 
-
+<div  class="content-wrapper">
+<div class="content">
+<div class="container-fluid">
 <div class="d-flex flex-column w-100 justify-content-center align-items-center">
 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-    <div class="card card-default rounded-0 shadow">
+    <div class="card   shadow">
         <div class="card-header">
-            <h4 class="card-title" style="text-align:right;"><b> احجز موعد</b></h4>
+            <h4 class="card-title"><b> احجز موعد</b></h4>
         </div> 
         <div class="card-body">
-            <div class="container-fluid">
-                {%if form.is_valid %}
-  <div class="alert alert-success" role="alert">
-    <p>{{msg}}</p></div>
-   {%endif%} 
+            
+            {%if form.is_valid %}
+            <div class="alert alert-success" role="alert">
+            <p>{{msg}}</p></div>
+            {%endif%} 
 <form action="" method="POst">
     {% csrf_token %}
     {% include 'mysite/form.html' %}
@@ -24,4 +26,6 @@
 </div>
 </div>
 </div>
-{% endblock content %}
+</div>
+</div>
+{% endblock %}

@@ -1,75 +1,29 @@
 {% extends 'parts/base.html' %}{% load static %}{% block content %}
 
-<style>
-    main {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: auto;
-    }
-    #logo-img{
-        height: 11em;
-        width: 26em;
-    }
-</style>
-
-
-<main role="main" id="background">
-
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-            <div class="card card-default rounded-0 shadow">
-                <div class="card-header">
-                    <h4 class="card-title"><b>Update Account Details</b></h4>
-                </div>
-                <div class="card-body">
-                    <div class="container-fluid">
-                        <form id="update-donneur" method="POST" action="{% url 'update_profile' %}" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <div class="mdc-layout-grid">
-                                <div class="mdc-layout-grid__inner">
-                                    <div class="form-group mb-3">
-                                        <label for="nom" class="control-label">nom </label>
-                                        <input type="text" class="form-control rounded-0" name="nom" id="nom" value="{% if form.data.nom %}{{ form.data.nom }}{% else %}{{ donneur.nom }}{% endif %}" required="required">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="tel" class="control-label">tel</label>
-                                        <input type="text" class="form-control rounded-0" name="tel" id="tel" value="{% if form.data.tel %}{{ form.data.tel }}{% else %}{{ donneur.tel }}{% endif %}" required="required">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="username" class="control-label">groupeSanguin</label>
-                                        <input type="text" class="form-control rounded-0" name="groupeSanguin" id="groupeSanguin" value="{% if form.data.groupeSanguin %}{{ form.data.groupeSanguin }}{% else %}{{ donneur.groupeSanguin }}{% endif %}" required="required">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="date_Dernier_Don" class="control-label">date_Dernier_Don</label>
-                                        <input type="text" class="form-control rounded-0" name="date_Dernier_Don" id="date_Dernier_Don" value="{% if form.data.date_Dernier_Don %}{{ form.data.date_Dernier_Don }}{% else %}{{ donneur.date_Dernier_Don }}{% endif %}" required="required">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="password" class="control-label">Enter Password</label>
-                                        <input type="password" class="form-control rounded-0" name="password" id="password" required="required">
-                                    </div>
-                                    {% for field in form %} {% for error in field.errors %}
-                                    <div class="alert alert-danger my-2">
-                                        <p>{{ error }}</p>
-                                    </div>
-                                    {% endfor %} {% endfor %}
-                                    <div class="form-group mb-3">
-                                        <div class="d-flex w-100 justify-content-end">
-                                            <button class="btn btn-sm rounded-0 btn-primary col-4">
-                                                    تعديل
-                                                </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+<div  class="content-wrapper">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <div class="d-flex justify-content-between">
+                <h4 class="card-title"><b>تحديث تفاصيل الحساب</b></h4>                  
+            </div>
+          </div>
+          <div class="card-body">
+         <form  method="POST" action="">
+            {% csrf_token %}
+            {% include 'mysite/form.html' %}
+                 <button class="btn btn-sm rounded-0 btn-primary col-4">
+                             تعديل
+                     </button>
+                    </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 {% endblock content %}

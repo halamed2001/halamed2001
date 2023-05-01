@@ -1,36 +1,36 @@
 from django.db import models
 
 
+
 # Create your models here.
 class Donneur(models.Model):
-
     nom = models.CharField(max_length=20, verbose_name='الاسم')
     tel = models.IntegerField(verbose_name='الهاتف')
     password = models.CharField(max_length=10, verbose_name='كلمةالسر')
-    groupeSanguin = models.CharField(max_length=10,  choices=(('1', 'لا اعرف'),
-        ('2', 'o-'),
-        ('3', 'o+'),
-        ('4', 'A-'),
-        ('5', 'B-'),
-        ('6', 'AB-'),
-        ('7', 'B+'),
-        ('8', 'AB+'),
-        ('9', 'A+')), verbose_name='زمرةالدم')
+    groupeSanguin = models.CharField(max_length=10,  choices=(('لا اعرف', 'لا اعرف'),
+        ('O-', 'O-'),
+        ('O+', 'O+'),
+        ('A-', 'A-'),
+        ('B-', 'B-'),
+        ('AB-', 'AB-'),
+        ('B+', 'B+'),
+        ('AB+', 'AB+'),
+        ('A+', 'A+')), verbose_name='زمرةالدم')
     date_Dernier_Don = models.DateField(verbose_name='تاريخ اخر تبرع')
     gender = models.CharField(max_length=10, choices=((' 1', 'ذكر'), ('2', 'أنثى')), verbose_name='الجنس')
-    wilaya = models.CharField(max_length=30, choices=((' 1', 'الحوض الشرقي'),
-        (' 2', 'الحوض الغربي'),
-        ('3', 'لعصابة'),
-        ('4', 'كوركول'),
-        ('5', 'لبراكنة'),
-        ('6', 'ترارزة'),
-        ('7', 'أدرار'),
-        ('8', 'انواذيبو'),
-        ('9', 'تكانت'),
-        ('10', 'غيديماغا'),
-        (' 11', 'تيرس زمور'),
-        ('12', 'إنشيري'),
-        ('13', 'انواكشوط')), verbose_name='الولاية')
+    wilaya = models.CharField(max_length=30, choices=((' الحوض الشرقي', 'الحوض الشرقي'),
+        ('الحوض الغربي', 'الحوض الغربي'),
+        ('لعصابة', 'لعصابة'),
+        ('كوركول', 'كوركول'),
+        ('لبراكنة', 'لبراكنة'),
+        ('ترارزة', 'ترارزة'),
+        ('أدرار', 'أدرار'),
+        ('انواذيبو', 'انواذيبو'),
+        ('تكانت', 'تكانت'),
+        ('كيديماغا', 'كيديماغا'),
+        ('تيرس زمور', 'تيرس زمور'),
+        ('إنشيري', 'إنشيري'),
+        ('انواكشوط', 'انواكشوط')), verbose_name='الولاية')
     def __str__(self):
         return self.nom
     
@@ -77,6 +77,23 @@ class Login(models.Model):
     class Meta:
        verbose_name = 'اتصال'
        verbose_name_plural = 'اتصالات'
+
+
+class GroupSanguin(models.Model):
+    name = models.CharField(max_length=10, verbose_name='الاسم',  choices=(('o-', 'o-'),
+        ('o+', 'o+'),
+        ('A-', 'A-'),
+        ('B-', 'B-'),
+        ('AB-', 'AB-'),
+        ('B+', 'B+'),
+        ('AB+', 'AB+'),
+        ('A+', 'A+')))
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+       verbose_name = 'زمرة الدم'
+       verbose_name_plural = 'زمر الدم'
 
 
 

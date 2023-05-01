@@ -1,128 +1,44 @@
 {% extends 'parts/base.html' %} {% load static %}
- {% block content %}
-
- <style>
-  main {
-      height: 50%;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: auto;
-  }
-  #logo-img{
-      height: 11em;
-      width: 26em;
-  }
-</style>
-
-
-<main role="main" id="background">
-
-    <div class="container">
-        <h2 >البحث عن متطوع</h2>
-        <center>
-        <div class="  col-lg-10">
-        <div class="card">
-          <div class="card-body" >
-            <form>
-              <input type="hidden" name="filters" value="">
-              <div class="row">
-  
-                <div style="padding-top:5px;" class="col-lg-3">
-                    <button type="submit" class="btn btn-block btn-success" name="button">البحث</button>
-                </div>
-  
-                <div style="padding-top:10px;" class="col-lg-3">
-                  <label for="">قابلون للنزع</label>
-                  <input checked name="capable" type="checkbox" name="" value="">
-                </div>
-                <div class="col-lg-3">
-                    <select name="wilaya_id" id="wilayas_select" class="form-control">
-                      <option value="">الولاية</option>
-                    </select>
-                </div>
-                <div class="col-lg-3">
-                  <select name="blood_type" id="" class="form-control">
-                      <option value="">صنف الدم</option>
-                                            <option   value="O-">O-</option>
-                                            <option   value="O+">O+</option>
-                                            <option   value="A+">A+</option>
-                                            <option   value="A-">A-</option>
-                                            <option   value="B+">B+</option>
-                                            <option   value="B-">B-</option>
-                                            <option   value="AB+">AB+</option>
-                                            <option   value="AB-">AB-</option>
-                                        </select>
-                </div>
-            
-              </div>
-            </form>
+{% block content %}
+<div  class="content-wrapper">
+  <div class="content">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header border-0">
+          <div class="d-flex justify-content-between">
+            <h1 class="card-title">نتائج البحث</h1>                    
           </div>
         </div>
-    </div>
-</center>
-</div>
-</main>
-
-    <h4> المتبرعين </h4>
-    <div class="container">
+        <div class="card-body">
 <table class="table">
-    <thead class="thead-dark">
+  <thead>
     <tr>
-        <th style="text-align:right;">الهاتف</th>
-        <th style="text-align:right;">الاسم</th>
-        <th style="text-align:right;">الزمرة</th>     
+      <th>الاسم</th>
+      <th>الهاتف</th>
+      <th>الزمرة</th>
+      <th>الولاية</th>
+      <th>تالريخ اخر تبرع</th>
     </tr>
-   </thead>
-   <tbody>
+  </thead>
+  <tbody>
+    {%for  donneur in donneur%}
     <tr>
-        <td></td>
-        <td> </td>
-        <td> </td>
+      <td >{{donneur.nom}}</td>
+      <td>{{donneur.tel}}</td>
+      <td>{{donneur.groupeSanguin}}</td>
+      <td>{{donneur.wilaya}}</td>
+      <td>{{donneur.date_Dernier_Don}}</td>
     </tr>
-
-</tbody>
+    {%endfor%}
+  </tbody>
 </table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
-
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{%  static 'jquery.js'%}"></script>
-
-<script type="text/javascript">
-
-  $("body").ready(function(e) {
-        $('#counter').counterUp({
-            delay: 10,
-            time: 1000
-        });
-    });
-</script>
-</html>
-<script>
-$("body").ready(function(e){
-  $("#wilaya_id").change(function(e){
-    var wilaya_id = $(e.target).val();
-    if(wilaya_id == "") return;
-    $.ajax({
-      url:"./get_contact.php",
-      method:"get",
-      data:{wilaya_id},
-      success:function(response){
-        $("#contact_wrapper").replaceWith(contact_wrapper(response));
-      }
-    });
-  });
-});
-function contact_wrapper(contacts){
-  var contact_wrapper = $(`<div id="contact_wrapper"></div>`);
-  contacts.forEach(function(contact, index){
-    $(contact_wrapper).append(`<div><h3>${contact.fullname}</h3><p>الهاتف: <a href="tel:${contact.tel}">${contact.tel}</a></p><p><a target="_blank" href="${contact.fb_page}">صفحة الفايسبوك</a><p></div>`);
-  });
-  return contact_wrapper;
-}
-</script>
-
-{% endblock content %}
- 
+{% endblock %}
